@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/">Show All Courses</a><br />
-Title :<span th:text="${course.title}" ></span><br />
-Instructor :<span th:text="${course.instructor}" ></span><br />
-Description :<span th:text="${course.description}" ></span><br />
-Credits :<span th:text="${course.credit}" ></span><br />
-<a th:href="@{/delete/{id}(id=${course.id})}">Delete this course</a>
+<a href="/">Show All Luxury Cars</a><br />
+ID :<span th:text="${luxury.id}" ></span><br />
+Year :<span th:text="${luxury.year}" ></span><br />
+Make :<span th:text="${luxury.make}" ></span><br />
+Model :<span th:text="${luxury.model}" ></span><br />
+<a th:href="@{/delete/{id}(id=${luxury.id})}">Delete this luxury auto</a>
 </body>
 </html>

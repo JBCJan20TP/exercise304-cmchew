@@ -14,45 +14,45 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
-    CourseRepository courseRepository;
+    LuxuryRepository luxuryRepository;
     @RequestMapping("/")
-    public String listCourses(Model model){
-        model.addAttribute("courses", courseRepository.findAll());
+    public String listLuxurys(Model model){
+        model.addAttribute("luxurys", luxuryRepository.findAll());
         return "list";
     }
     @GetMapping("/add")
-    public String courseForm(Model model){
-       model.addAttribute("course", new Course());
-       return "courseform";
+    public String luxuryForm(Model model){
+       model.addAttribute("luxury", new Luxury());
+       return "luxuryform";
     }
     @PostMapping("/process")
-    public String processForm(@Valid Course course,
+    public String processForm(@Valid Luxury luxury,
                               BindingResult result){
         if (result.hasErrors()){
-            return "courseform";
+            return "luxuryform";
         }
-        courseRepository.save(course);
+       luxuryRepository.save(luxury);
         return "redirect:/";
     }
 
     @RequestMapping("/detail/{id}")
-    public String showCourse(@PathVariable("id") long id, Model model)
+    public String showLuxury(@PathVariable("id") long id, Model model)
 
     {
-        model.addAttribute("course", courseRepository.findById(id).get());
+        model.addAttribute("luxury", luxuryRepository.findById(id).get());
         return "show";
     }
 
     @RequestMapping("/update/{id}")
-    public String updateCourse(@PathVariable("id") long id,
+    public String updateLuxury(@PathVariable("id") long id,
                                Model model){
-        model.addAttribute("course", courseRepository.findById(id).get());
-        return "courseform";
+        model.addAttribute("luxury", luxuryRepository.findById(id).get());
+        return "luxuryform";
     }
 
     @RequestMapping("/delete/{id}")
     public String delCourse(@PathVariable("id") long id){
-        courseRepository.deleteById(id);
+        luxuryRepository.deleteById(id);
         return "redirect:/";
 
     }

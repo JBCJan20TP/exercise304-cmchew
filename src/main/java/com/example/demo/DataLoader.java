@@ -7,20 +7,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements CommandLineRunner {
     @Autowired
-    CourseRepository repository;
+    LuxuryRepository repository;
 
     @Override
     public void run(String... strings) throws Exception{
-        Course course = new Course("Astrophysics", "Neil D Tyson",
-                "Just a course on stars", 3);
-        repository.save(course);
+        Luxury luxury = new Luxury( "2019", "Audi", "RS3");
+        repository.save(luxury);
 
-        course = new Course("Calculus", "Carol Henley",
-                "Rate of Change of the Rate of Change", 3);
-        repository.save(course);
+        luxury = new Luxury("2019", "Porsche", "718");
+        repository.save(luxury);
 
-        course = new Course("Freshman English", "Geraldine Pegram",
-                "Learn your language children", 3);
-        repository.save(course);
+        luxury = new Luxury("2019", "Volvo", "XC40");
+        repository.save(luxury);
     }
 }
